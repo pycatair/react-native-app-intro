@@ -120,6 +120,10 @@ export default class AppIntro extends Component {
     };
   }
 
+  scrollBy = (index) => {
+    this._swiper.scrollTo(index);
+  }
+
   onNextBtnClick = (context) => {
     if (context.state.isScrolling || context.state.total < 2) return;
     const state = context.state;
@@ -345,6 +349,7 @@ export default class AppIntro extends Component {
           loop={false}
           index={this.props.defaultIndex}
           renderPagination={this.renderPagination}
+          ref={ swiper => {this._swiper = swiper} }
           onMomentumScrollEnd={(e, state) => {
             if (this.isToTintStatusBar()) {
               StatusBar.setBackgroundColor(this.shadeStatusBarColor(this.props.pageArray[state.index].backgroundColor, -0.3), false);
