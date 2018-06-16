@@ -318,23 +318,24 @@ export default class AppIntro extends Component {
       if (Platform.OS === 'ios') {
         pages = childrens.map((children, i) => this.renderChild(children, i, i));
       } else {
-        androidPages = childrens.map((children, i) => {
-          const { transform } = this.getTransform(i, -windowsWidth / 3 * 2, 1);
-          pages.push(<View key={i} />);
-          return (
-            <Animated.View key={i} style={[{
-              position: 'absolute',
-              height: windowsHeight,
-              width: windowsWidth,
-              top: 0,
-            }, {
-              ...transform[0],
-            }]}
-            >
-              {this.renderChild(children, i, i)}
-            </Animated.View>
-          );
-        });
+        // androidPages = childrens.map((children, i) => {
+        //   const { transform } = this.getTransform(i, -windowsWidth / 3 * 2, 1);
+        //   pages.push(<View key={i} />);
+        //   return (
+        //     <Animated.View key={i} style={[{
+        //       position: 'absolute',
+        //       height: windowsHeight,
+        //       width: windowsWidth,
+        //       top: 0,
+        //     }, {
+        //       ...transform[0],
+        //     }]}
+        //     >
+        //       {this.renderChild(children, i, i)}
+        //     </Animated.View>
+        //   );
+        // });
+        pages = childrens.map((children, i) => this.renderChild(children, i, i));
       }
     }
 
